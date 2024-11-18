@@ -1,0 +1,109 @@
+DAY 3
+
+So, another game today! I'm going to try 'Down', because that should
+be easy and I'm behind. (I got chatting with an artist friend about
+game art, and I read some of the design patterns book, so there are
+alright reasons, but a game still needs to be made!)
+
+So, down. You are on a platform, which steadily rises. There are
+other platforms, below, that are randomly generated. These start
+at the bottom of the screen and also steadily rise. You have to drop
+down to a lower platform before you hit the top of the screen,
+or you die.
+
+Most of this seems really easy, though I think getting the platforms
+to be distributed in a way that makes the game possible and not too
+easy or difficult is going to be the challenge. Well, this is
+'game a day with godot', not 'GOOD game a day with godot'. I reckon
+I can get the basic shape coded in an hour. Let's see if that's
+completely delusional or not.
+
+We need:
+ * player scene (characterbody2d, sprite2d, collsionshape2d)
+ * platform scene (rigidbody2d, sprite2d, collisionshape2d)
+    (or some 2d that's not area2d, to care about collision direction)
+     needs collision detection on upper edge
+ * code to randomly generate platforms offscreen at bottom at x coord
+ * code to detect when player has gone over top of screen or fallen
+   through bottom (player y < 0 or > screensize.y)
+ * clamp player to horizontal area
+ * code to move player (pinch from snake, reduce to just l and r,
+   stop caring about prev direction)
+ * score tracker corresponding to time survived
+ extras:
+  * music and graphics if I can be bothered
+  * unlockables
+
+currently I really don't expect this to take longer than half an
+hour, so maybe I'll get time to do music and pictures this time around.
+I think most of the time will be spent checking which 2d area to use
+for the players and platforms. Let's check now!
+
+Okay, I think I want characterbody2d for the character, and staticbody2d
+for the platforms.
+
+decided to make it more interesting for myself by using an
+animatedsprite2d for the character. am reusing their asset for now,
+the free to use character from Dodge the creeps. this means I'll need
+to track the player's direction if I want to flip it to match. stretch.
+for now, just get the skeleton of the game coded.
+
+10 mins later. got character, platform, collision detection, chara
+falls off if it goes over the edge. great. I really should have done
+this one on day 1. :,D
+
+I think we can make the platforms steadily rise just by changing 
+their gravity property. Let's see...
+
+aha, I need the node to be a rigidbody2d for gravity to affect it.
+let's see if I can change that...
+
+done! by default, your character's weight makes the platform wobble
+and rotate when you walk along it. I've turned that off for now
+by disabling the platform's awareness of the collision-detection,
+since the player detects it anyway. and I've set the gravity to -0.2.
+By decreasing that value, you'd make the game harder, because the
+platform would rise faster.
+
+so, this class came with movement built in, so no need to code that.
+
+let's generate a new platform each time a timer counts down.
+
+made it! Took half an hour, haha. am regaining my honour after the
+disaster that was snake. needs some adjustments to parameters to make
+it more fun, and the animation fixing so the character moves and flips
+directions depnding on the direction of travel. but it's playable.
+You run around to stay alive and you can see your score.
+
+Now restart works and the animation is working.
+Going to adjust the parameters so that it's more fun, and maybe make
+it a bit less ugly.
+
+ah, in the future I want it so when you hit a platform it plays a note
+from some preselected pool of notes. That way it can play random
+tunes in different scales. the user should be able to select the scale
+(or mood, at least) from a menu.
+
+for now, I'll just give it some background music. Let's make something
+up.
+
+got distracted playing the game. oops. It displays a high score, now
+
+I adjusted the free sprite so it's green. I'd rather make one from
+scratch, but I'll do that some other time, or hopefully convince
+artist friend to do it. :P
+
+I'll go back and clean up the code some other time, too.
+
+Getting the physics parameters in the right range to make the game
+fun was the hardest part with this one. I still sometimes get confused
+about whether I need to set a param within some .tscn , or at the 'node'
+level, if that makes sense. it probably doesn't. Oh well. I know what
+I mean. The first node on the screen of some type will usually be the
+one on the outer/node level, and then the others are instantiated
+based on the values in the tscn. So their config can get out of sync,
+and if you don't want that you have to watch out for it!
+
+I learned much less doing this than I did with snake, but some of
+that knowledge sped this up dramatically, and it was nice to not
+feel useless, at least.
