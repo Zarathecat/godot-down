@@ -31,7 +31,6 @@ autostart = true
 [node name="Hud" type="CanvasLayer" parent="."]
 
 [node name="Score" type="Label" parent="Hud"]
-modulate = Color(0.154876, 0.154876, 0.154876, 1)
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Score: 0"
