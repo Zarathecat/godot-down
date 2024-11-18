@@ -46,7 +46,8 @@ func game_over():
 	var platforms = get_tree().get_nodes_in_group("platforms")
 	for platform in platforms:
 		platform.queue_free()
-		restart()
+	$Platform.queue_free() # Remove the first one, too
+	restart()
 
 func restart():
 	generate_platform(window_size.x/2, 4 * window_size.y/ 5)
