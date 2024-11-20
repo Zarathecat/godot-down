@@ -107,3 +107,16 @@ and if you don't want that you have to watch out for it!
 I learned much less doing this than I did with snake, but some of
 that knowledge sped this up dramatically, and it was nice to not
 feel useless, at least.
+
+(I added some music. But it's unwise to put music in a git repo, so
+I'm not pushing that, or the changes to accommodate it. It's
+not good music, anyway (I think videogame tracks need to be about 2min
+in length not to be really annoying; this one's circa 30 secs). It's
+not dreadful, but I could definitely do better with it. I spent
+a while trying to work out why my midi controller wasn't talking to
+my software, but I eventually got it working, recorded the midi,
+opened that in musescore to clean it up and export to .ogg, opened
+*that* in audacity because musescore had added an extra bar of silence,
+and got the loop working so it'd play smoothly in-game. It's still not
+great but I was pleased to find the process could work from end to end,
+and now I have some fastpaced placeholder music that suits the game.)
