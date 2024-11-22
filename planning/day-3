@@ -120,3 +120,9 @@ opened that in musescore to clean it up and export to .ogg, opened
 and got the loop working so it'd play smoothly in-game. It's still not
 great but I was pleased to find the process could work from end to end,
 and now I have some fastpaced placeholder music that suits the game.)
+
+(then discovered I could push the changes to accommodate it after all.
+So have updated!)
+
+In the future, I'd like to do some more physics experiments with the
+platforms. All sorts of interesting behaviours must be possible!
