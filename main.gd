@@ -8,7 +8,7 @@ var high_score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$Bgm.play()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -28,7 +28,17 @@ func increase_score():
 	score +=1
 	if score > high_score:
 		high_score = score
-	
+
+# TODO: instead of generating a new platform each time, use an object
+# pool (20 platforms, maybe?) and recycle them when they go offscreen.
+# (It doesn't matter that much right now, since the game isn't big
+# enough to eat memory, but *I* know it's silly as it is. We
+# currently keep making platforms for as long as the player survives,
+# then delete them all on a game over. So if you're good at the game,
+# there will be hundreds of invisible platforms flying off into space,
+# silently chomping memory.
+# Need to figure out how to fix this; logic's easy but you can't set
+# the position of RigidBody2D directly with a script.
 func generate_platform(x, y):
 	var platform = platform_scene.instantiate()
 	if x < 0 or y < 0:
